@@ -36,8 +36,19 @@
 -(IBAction)sendButton:(UIButton *)sender
 {
     NSArray *tempArray = self.inputTextField.text ? [self.inputTextField.text symbolsForLetter] : @[@"String Was Nil"];
-    
-    NSLog(@"%@", tempArray);
+    if (tempArray != nil)
+    {
+        NSLog(@"%@", tempArray);
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You suck"
+                                                        message:@"Letters and numbers only, please!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"I agree to play by the rules"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 #pragma -Keyboard handling
