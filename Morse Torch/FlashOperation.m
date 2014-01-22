@@ -26,6 +26,7 @@
     self = [super init];
     self.morseString = inputString;
     return self;
+    NSLog(@"helo");
 }
 
 - (void) main
