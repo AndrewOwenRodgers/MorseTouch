@@ -12,21 +12,19 @@
 
 - (NSArray *) symbolsForLetter
 {
-    NSString *noSpaces = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    if ([NSString isAlphaNumeric:noSpaces])
+    if ([NSString isAlphaNumeric:self])
     {
         NSMutableArray *tempArray = [NSMutableArray new];
-        for (int i = 0; i < noSpaces.length; i++)
+        for (int i = 0; i < self.length; i++)
         {
-            [tempArray addObject:[noSpaces symbolForSingleLetter:[noSpaces substringWithRange:NSMakeRange(i, 1)]]];
+            [tempArray addObject:[self symbolForSingleLetter:[self substringWithRange:NSMakeRange(i, 1)]]];
         }
-        return ([NSArray arrayWithArray:tempArray]);
+        return ([NSArray arrayWithArray:tempArray]); //Gives back a morse code version of the string
     }
-    return nil;
+    return nil; //Returns a nil string if it can't convert the whole string
 }
 
-- (NSString *) symbolForSingleLetter:(NSString *)letter
+- (NSString *) symbolForSingleLetter:(NSString *)letter //Returns the morse code for a letter
 {
     letter = [letter uppercaseString];
     if (!([letter rangeOfString:@"A"].location == NSNotFound))
@@ -176,9 +174,11 @@
     return letter;
 }
 
-+ (BOOL) isAlphaNumeric:(NSString *)string
++ (BOOL) isAlphaNumeric:(NSString *)string //Checks for alphanumericity
 {
-    NSCharacterSet *dumbCharacters =[[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    NSMutableCharacterSet *mySet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];
+    [mySet formUnionWithCharacterSet:[NSCharacterSet alphanumericCharacterSet]];
+    NSCharacterSet *dumbCharacters =[mySet invertedSet];
     return ([string rangeOfCharacterFromSet:dumbCharacters].location == NSNotFound);
 }
 

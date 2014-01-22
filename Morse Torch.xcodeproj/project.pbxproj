@@ -22,6 +22,7 @@
 		07278A23188DA0440061D50B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07278A21188DA0440061D50B /* InfoPlist.strings */; };
 		07278A25188DA0440061D50B /* Morse_TorchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07278A24188DA0440061D50B /* Morse_TorchTests.m */; };
 		07278A7A188DB1040061D50B /* NSString+MorseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 07278A79188DB1040061D50B /* NSString+MorseCode.m */; };
+		07278A7D188F56690061D50B /* FlashOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07278A7C188F56690061D50B /* FlashOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		07278A24188DA0440061D50B /* Morse_TorchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Morse_TorchTests.m; sourceTree = "<group>"; };
 		07278A78188DB1040061D50B /* NSString+MorseCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MorseCode.h"; sourceTree = "<group>"; };
 		07278A79188DB1040061D50B /* NSString+MorseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MorseCode.m"; sourceTree = "<group>"; };
+		07278A7B188F56690061D50B /* FlashOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashOperation.h; sourceTree = "<group>"; };
+		07278A7C188F56690061D50B /* FlashOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				07278A0B188DA0440061D50B /* Main.storyboard */,
 				07278A0E188DA0440061D50B /* ViewController.h */,
 				07278A0F188DA0440061D50B /* ViewController.m */,
+				07278A7B188F56690061D50B /* FlashOperation.h */,
+				07278A7C188F56690061D50B /* FlashOperation.m */,
 				07278A78188DB1040061D50B /* NSString+MorseCode.h */,
 				07278A79188DB1040061D50B /* NSString+MorseCode.m */,
 				07278A11188DA0440061D50B /* Images.xcassets */,
@@ -258,6 +263,7 @@
 				07278A0A188DA0440061D50B /* AppDelegate.m in Sources */,
 				07278A06188DA0440061D50B /* main.m in Sources */,
 				07278A7A188DB1040061D50B /* NSString+MorseCode.m in Sources */,
+				07278A7D188F56690061D50B /* FlashOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

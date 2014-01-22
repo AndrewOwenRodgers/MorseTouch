@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "NSString+MorseCode.h"
+#import "FlashOperation.h"
 
 @interface ViewController ()
 {
@@ -25,6 +25,7 @@
 {
     [super viewDidLoad];
     self.inputTextField.delegate = self;
+    [self.sendButton setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,20 +36,10 @@
 
 -(IBAction)sendButton:(UIButton *)sender
 {
-    NSArray *tempArray = self.inputTextField.text ? [self.inputTextField.text symbolsForLetter] : @[@"String Was Nil"];
-    if (tempArray != nil)
-    {
-        NSLog(@"%@", tempArray);
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You suck"
-                                                        message:@"Letters and numbers only, please!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"I agree to play by the rules"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
+    NSOperationQueue *flashQueue =[[NSOperationQueue alloc] init];
+    FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text
+                                                           andButton:self.sendButton];
+    [flashQueue addOperation:flasher];
 }
 
 #pragma -Keyboard handling
@@ -109,6 +100,19 @@
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (string.length > 0)
+    {
+        [self.sendButton setEnabled:YES];
+    }
+    else
+    {
+        [self.sendButton setEnabled:NO];
+    }
+    return YES;
 }
 
 @end
