@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlashOperation.h"
 
 @interface ViewController : UIViewController
-<UITextFieldDelegate>
+<UITextFieldDelegate, flashOpProtocol>
 
 @end

@@ -9,27 +9,32 @@
 #import "FlashOperation.h"
 #import "NSString+MorseCode.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface FlashOperation()
 
+@property MBProgressHUD *hud;
+
 @property NSString *morseString;
-@property UIButton *sendButton;
 
 @end
 
 @implementation FlashOperation
 
--(id) initWithString:(NSString *)inputString andButton:(UIButton *)sendButton
+-(id) initWithString:(NSString *)inputString
 {
     self = [super init];
     self.morseString = inputString;
-    self.sendButton = sendButton;
     return self;
 }
 
 - (void) main
 {
-    [self.sendButton setEnabled:NO];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:
+    ^{
+        [_delegate flipEnabling];
+        _hud = [MBProgressHUD showHUDAddedTo:_delegate.view animated:YES];
+    }];
     
     @autoreleasepool
     {
@@ -38,6 +43,7 @@
         {
             for (int i = 0; i < [tempArray count]; i++) //Checks through the morse code strings
             {
+                _hud.labelText = [NSString stringWithFormat:@"%c", [self.morseString characterAtIndex:i]];
                 if ([[tempArray objectAtIndex:i] isEqualToString:@" "]) //Stops flashing for .5 seconds for spaces between words
                 {
                     [NSThread sleepForTimeInterval:0.5];
@@ -89,7 +95,11 @@
             }];
         }
     }
-    [self.sendButton setEnabled:YES];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:
+     ^{
+         [_delegate flipEnabling];
+         [MBProgressHUD hideHUDForView:_delegate.view animated:YES];
+     }];
 }
 
 @end

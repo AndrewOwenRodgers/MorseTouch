@@ -10,8 +10,17 @@
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol flashOpProtocol <NSObject>
+
+@property UIView *view;
+- (void) flipEnabling;
+
+@end
+
 @interface FlashOperation : NSOperation
 
--(id) initWithString:(NSString *)inputString andButton:(UIButton *)sendButton;
+@property (unsafe_unretained) id <flashOpProtocol> delegate;
+
+-(id) initWithString:(NSString *)inputString;
 
 @end

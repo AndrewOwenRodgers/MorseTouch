@@ -11,7 +11,8 @@
 
 @interface ViewController ()
 {
-        CGFloat slideheight;
+    CGFloat slideheight;
+    BOOL enableUnlocked;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     self.inputTextField.delegate = self;
     [self.sendButton setEnabled:NO];
+    enableUnlocked = TRUE;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,8 +39,8 @@
 -(IBAction)sendButton:(UIButton *)sender
 {
     NSOperationQueue *flashQueue =[[NSOperationQueue alloc] init];
-    FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text
-                                                           andButton:self.sendButton];
+    FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text];
+    flasher.delegate = self;
     [flashQueue addOperation:flasher];
 }
 
@@ -104,15 +106,32 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (string.length > 0)
+    if (enableUnlocked)
     {
-        [self.sendButton setEnabled:YES];
+        if (self.inputTextField.text.length > 0)
+        {
+            [self.sendButton setEnabled:YES];
+        }
+        else
+        {
+            [self.sendButton setEnabled:NO];
+        }
+    }
+    return YES;
+}
+
+- (void) flipEnabling
+{
+    if (enableUnlocked)
+    {
+        enableUnlocked = FALSE;
+        [self.sendButton setEnabled:NO];
     }
     else
     {
-        [self.sendButton setEnabled:NO];
+        enableUnlocked = TRUE;
+        [self.sendButton setEnabled:YES];
     }
-    return YES;
 }
 
 @end
