@@ -44,6 +44,10 @@
         {
             for (int i = 0; i < [tempArray count]; i++) //Checks through the morse code strings
             {
+                if (self.isCancelled)
+                {
+                    break;
+                }
                 _hud.labelText = [NSString stringWithFormat:@"%c", [self.morseString characterAtIndex:i]];
                 if ([[tempArray objectAtIndex:i] isEqualToString:@" "]) //Stops flashing for .5 seconds for spaces between words
                 {
