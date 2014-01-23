@@ -15,6 +15,7 @@
     BOOL enableUnlocked;
 }
 
+@property (nonatomic) FlashOperation *flasher;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
@@ -38,19 +39,16 @@
 
 -(IBAction)sendButton:(UIButton *)sender
 {
-    @autoreleasepool
+    if (sender.tag == 1)
+    {
+        [self.flasher cancel];
+    }
+    else
     {
         NSOperationQueue *flashQueue =[[NSOperationQueue alloc] init];
-        FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text];
-        flasher.delegate = self;
-        if (sender.tag == 0)
-        {
-            [flashQueue addOperation:flasher];
-        }
-        else
-        {
-            [flashQueue cancelAllOperations];
-        }
+        self.flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text];
+        self.flasher.delegate = self;
+        [flashQueue addOperation:self.flasher];
     }
 }
 

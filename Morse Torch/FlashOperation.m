@@ -15,7 +15,6 @@
 @interface FlashOperation()
 
 @property MBProgressHUD *hud;
-
 @property NSString *morseString;
 
 @end
@@ -35,6 +34,7 @@
     ^{
         [_delegate flipEnabling];
         _hud = [MBProgressHUD showHUDAddedTo:_delegate.view animated:YES];
+        _hud.userInteractionEnabled = NO;
     }];
     
     @autoreleasepool
@@ -51,39 +51,35 @@
                 }
                 else
                 {
-                    if  (self.isCancelled)
+                    for (int j = 0; j < [[tempArray objectAtIndex:i] length]; j++) //Iterates the morse code symbols
                     {
-                        break;
-                    }
-                    else
-                    {
-                        for (int j = 0; j < [[tempArray objectAtIndex:i] length]; j++) //Iterates the morse code symbols
+                        if (self.isCancelled)
                         {
-                            NSLog(@"%c", [[tempArray objectAtIndex:i] characterAtIndex:j]);
-                        
-                            AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo]; //Turns on torch
-                            if ([device hasTorch])
-                            {
-                                [device lockForConfiguration:nil];
-                                [device setTorchMode:AVCaptureTorchModeOn];
-                                [device unlockForConfiguration];
-                            }
-                    
-                            if ([[tempArray objectAtIndex:i] characterAtIndex:j] == '.') //Checks which morse code character it is and then delays for a long or short period
-                            {
-                                [NSThread sleepForTimeInterval:0.1];
-                            }
-                            else
-                            {
-                                [NSThread sleepForTimeInterval:0.3];
-                            }
-                    
-                            if ([device hasTorch]) //Turns off torch
-                            {
-                                [device lockForConfiguration:nil];
-                                [device setTorchMode:AVCaptureTorchModeOff];
-                                [device unlockForConfiguration];
-                            }
+                            break;
+                        }
+                        NSLog(@"%c", [[tempArray objectAtIndex:i] characterAtIndex:j]);
+                        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo]; //Turns on torch
+                        if ([device hasTorch])
+                        {
+                            [device lockForConfiguration:nil];
+                            [device setTorchMode:AVCaptureTorchModeOn];
+                            [device unlockForConfiguration];
+                        }
+                
+                        if ([[tempArray objectAtIndex:i] characterAtIndex:j] == '.') //Checks which morse code character it is and then delays for a long or short period
+                        {
+                            [NSThread sleepForTimeInterval:0.1];
+                        }
+                        else
+                        {
+                            [NSThread sleepForTimeInterval:0.3];
+                        }
+                
+                        if ([device hasTorch]) //Turns off torch
+                        {
+                            [device lockForConfiguration:nil];
+                            [device setTorchMode:AVCaptureTorchModeOff];
+                            [device unlockForConfiguration];
                         }
                         sleep(.1); //Sleeps for .1 second between characters
                     }
@@ -103,6 +99,7 @@
             }];
         }
     }
+    
     [[NSOperationQueue mainQueue] addOperationWithBlock:
      ^{
          [_delegate flipEnabling];
