@@ -38,10 +38,20 @@
 
 -(IBAction)sendButton:(UIButton *)sender
 {
-    NSOperationQueue *flashQueue =[[NSOperationQueue alloc] init];
-    FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text];
-    flasher.delegate = self;
-    [flashQueue addOperation:flasher];
+    @autoreleasepool
+    {
+        NSOperationQueue *flashQueue =[[NSOperationQueue alloc] init];
+        FlashOperation *flasher = [[FlashOperation alloc] initWithString:self.inputTextField.text];
+        flasher.delegate = self;
+        if (sender.tag == 0)
+        {
+            [flashQueue addOperation:flasher];
+        }
+        else
+        {
+            [flashQueue cancelAllOperations];
+        }
+    }
 }
 
 #pragma -Keyboard handling
@@ -111,10 +121,12 @@
         if (self.inputTextField.text.length > 0)
         {
             [self.sendButton setEnabled:YES];
+            [self.sendButton setBackgroundColor:[UIColor blueColor]];
         }
         else
         {
             [self.sendButton setEnabled:NO];
+            [self.sendButton setBackgroundColor:[UIColor grayColor]];
         }
     }
     return YES;
@@ -125,12 +137,16 @@
     if (enableUnlocked)
     {
         enableUnlocked = FALSE;
-        [self.sendButton setEnabled:NO];
+        self.sendButton.tag = 1;
+        self.sendButton.titleLabel.text = @"Stop";
+        [self.sendButton setBackgroundColor:[UIColor redColor]];
     }
     else
     {
         enableUnlocked = TRUE;
-        [self.sendButton setEnabled:YES];
+        self.sendButton.tag = 0;
+        self.sendButton.titleLabel.text = @"Send";
+        [self.sendButton setBackgroundColor:[UIColor blueColor]];
     }
 }
 

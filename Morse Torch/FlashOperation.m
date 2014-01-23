@@ -51,35 +51,42 @@
                 }
                 else
                 {
-                    for (int j = 0; j < [[tempArray objectAtIndex:i] length]; j++) //Iterates the morse code symbols
+                    if  (self.isCancelled)
                     {
-                        NSLog(@"%c", [[tempArray objectAtIndex:i] characterAtIndex:j]);
-                        
-                        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo]; //Turns on torch
-                        if ([device hasTorch])
-                        {
-                            [device lockForConfiguration:nil];
-                            [device setTorchMode:AVCaptureTorchModeOn];
-                            [device unlockForConfiguration];
-                        }
-                    
-                        if ([[tempArray objectAtIndex:i] characterAtIndex:j] == '.') //Checks which morse code character it is and then delays for a long or short period
-                        {
-                            [NSThread sleepForTimeInterval:0.1];
-                        }
-                        else
-                        {
-                            [NSThread sleepForTimeInterval:0.3];
-                        }
-                    
-                        if ([device hasTorch]) //Turns off torch
-                        {
-                            [device lockForConfiguration:nil];
-                            [device setTorchMode:AVCaptureTorchModeOff];
-                            [device unlockForConfiguration];
-                        }
+                        break;
                     }
-                    sleep(.1); //Sleeps for .1 second between characters
+                    else
+                    {
+                        for (int j = 0; j < [[tempArray objectAtIndex:i] length]; j++) //Iterates the morse code symbols
+                        {
+                            NSLog(@"%c", [[tempArray objectAtIndex:i] characterAtIndex:j]);
+                        
+                            AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo]; //Turns on torch
+                            if ([device hasTorch])
+                            {
+                                [device lockForConfiguration:nil];
+                                [device setTorchMode:AVCaptureTorchModeOn];
+                                [device unlockForConfiguration];
+                            }
+                    
+                            if ([[tempArray objectAtIndex:i] characterAtIndex:j] == '.') //Checks which morse code character it is and then delays for a long or short period
+                            {
+                                [NSThread sleepForTimeInterval:0.1];
+                            }
+                            else
+                            {
+                                [NSThread sleepForTimeInterval:0.3];
+                            }
+                    
+                            if ([device hasTorch]) //Turns off torch
+                            {
+                                [device lockForConfiguration:nil];
+                                [device setTorchMode:AVCaptureTorchModeOff];
+                                [device unlockForConfiguration];
+                            }
+                        }
+                        sleep(.1); //Sleeps for .1 second between characters
+                    }
                 }
             }
         }
