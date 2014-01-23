@@ -116,7 +116,7 @@
 {
     if (enableUnlocked)
     {
-        if (self.inputTextField.text.length > 0)
+        if (string.length > 0 || self.inputTextField.text.length > 1)
         {
             [self.sendButton setEnabled:YES];
             [self.sendButton setBackgroundColor:[UIColor blueColor]];
