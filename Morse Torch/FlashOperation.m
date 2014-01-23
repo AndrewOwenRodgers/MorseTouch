@@ -5,6 +5,7 @@
 //  Created by Andrew Rodgers on 1/21/14.
 //  Copyright (c) 2014 Andrew Rodgers. All rights reserved.
 //
+//  Flash Operation utilizes the Cocoa Pod MBProgressHUD, Copyright (c) 2013 Matej Bukovinski
 
 #import "FlashOperation.h"
 #import "NSString+MorseCode.h"
@@ -26,7 +27,6 @@
     self = [super init];
     self.morseString = inputString;
     return self;
-    NSLog(@"helo");
 }
 
 - (void) main
