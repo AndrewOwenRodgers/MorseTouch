@@ -174,6 +174,156 @@
     return letter;
 }
 
+
+- (NSString *) letterForSingleMorseCodeSymbol:(NSString *)letter //Returns the morse code for a letter
+{
+    if ([letter isEqualToString:@".-"])
+    {
+        return @"A";
+    }
+    else if ([letter isEqualToString:@"-..."])
+    {
+        return @"B";
+    }
+    else if ([letter isEqualToString:@"-.-."])
+    {
+        return @"C";
+    }
+    else if ([letter isEqualToString:@"-.."])
+    {
+        return @"D";
+    }
+    else if ([letter isEqualToString:@"."])
+    {
+        return @"E";
+    }
+    else if ([letter isEqualToString:@"..-."])
+    {
+        return @"F";
+    }
+    else if ([letter isEqualToString:@"--."])
+    {
+        return @"G";
+    }
+    else if ([letter isEqualToString:@"...."])
+    {
+        return @"H";
+    }
+    else if ([letter isEqualToString:@".."])
+    {
+        return @"I";
+    }
+    else if ([letter isEqualToString:@".---"])
+    {
+        return @"J";
+    }
+    else if ([letter isEqualToString:@"-.-"])
+    {
+        return @"K";
+    }
+    else if ([letter isEqualToString:@".-.."])
+    {
+        return @"L";
+    }
+    else if ([letter isEqualToString:@"-..."])
+    {
+        return @"M";
+    }
+    else if ([letter isEqualToString:@"-."])
+    {
+        return @"N";
+    }
+    else if ([letter isEqualToString:@"---"])
+    {
+        return @"O";
+    }
+    else if ([letter isEqualToString:@".--."])
+    {
+        return @"P";
+    }
+    else if ([letter isEqualToString:@"--.-"])
+    {
+        return @"Q";
+    }
+    else if ([letter isEqualToString:@".-."])
+    {
+        return @"R";
+    }
+    else if ([letter isEqualToString:@"..."])
+    {
+        return @"S";
+    }
+    else if ([letter isEqualToString:@"-"])
+    {
+        return @"T";
+    }
+    else if ([letter isEqualToString:@"..-"])
+    {
+        return @"U";
+    }
+    else if ([letter isEqualToString:@"...-"])
+    {
+        return @"V";
+    }
+    else if ([letter isEqualToString:@".--"])
+    {
+        return @"W";
+    }
+    else if ([letter isEqualToString:@"-..-"])
+    {
+        return @"X";
+    }
+    else if ([letter isEqualToString:@"-.--"])
+    {
+        return @"Y";
+    }
+    else if ([letter isEqualToString:@"--.."])
+    {
+        return @"Z";
+    }
+    else if ([letter isEqualToString:@".----"])
+    {
+        return @"1";
+    }
+    else if ([letter isEqualToString:@"..---"])
+    {
+        return @"2";
+    }
+    else if ([letter isEqualToString:@"...--"])
+    {
+        return @"3";
+    }
+    else if ([letter isEqualToString:@"....-"])
+    {
+        return @"4";
+    }
+    else if ([letter isEqualToString:@"....."])
+    {
+        return @"5";
+    }
+    else if ([letter isEqualToString:@"-...."])
+    {
+        return @"6";
+    }
+    else if ([letter isEqualToString:@"--..."])
+    {
+        return @"7";
+    }
+    else if ([letter isEqualToString:@"---.."])
+    {
+        return @"8";
+    }
+    else if ([letter isEqualToString:@"----."])
+    {
+        return @"9";
+    }
+    else if ([letter isEqualToString:@"-----"])
+    {
+        return @"0";
+    }
+    return letter;
+}
+
 + (BOOL) isAlphaNumeric:(NSString *)string //Checks for alphanumericity
 {
     NSMutableCharacterSet *mySet = [NSMutableCharacterSet characterSetWithCharactersInString:@" "];

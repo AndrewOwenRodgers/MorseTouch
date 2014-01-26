@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ReceiverViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *morseCodeStringLabel;
 
 @end

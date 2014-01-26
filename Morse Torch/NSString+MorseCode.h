@@ -11,6 +11,7 @@
 @interface NSString (MorseCode)
 
 - (NSArray *) symbolsForLetter;
++ (NSString *) letterForSingleMorseCodeSymbol:(NSString *)letter;
 + (BOOL) isAlphaNumeric:(NSString *)string;
 
 @end

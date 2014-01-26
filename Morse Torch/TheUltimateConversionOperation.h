@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MorseCodeToLetter <NSObject>
+
+@property UILabel *morseCodeStringLabel;
+
+@end
+
 @interface TheUltimateConversionOperation : NSOperation
 
 -(id) initWithStrings:(NSMutableArray *)fireStrings;
+@property (unsafe_unretained) id <MorseCodeToLetter> delegate;
 
 @end

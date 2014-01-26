@@ -7,10 +7,12 @@
 //
 
 #import "TheUltimateConversionOperation.h"
+#import "NSString+MorseCode.h"
 
 @interface TheUltimateConversionOperation()
 
 @property (nonatomic) NSMutableArray *morseStrings;
+@property (nonatomic) NSMutableString *returnString;
 
 @end
 
@@ -26,12 +28,19 @@
     {
         [self convertString:fireString];
     }
+    _delegate.morseCodeStringLabel.text = self.returnString;
     return self;
 }
 
 -(void) convertString:(NSString *)morseString
 {
+    NSArray *strings = [morseString componentsSeparatedByString:@" "];
+    [self.returnString appendString:@" "];
     
+    for (NSString *letter in strings)
+    {
+        [self.returnString stringByAppendingString:[NSString letterForSingleMorseCodeSymbol:letter]];
+    }
 }
 
 @end
