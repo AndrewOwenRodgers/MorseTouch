@@ -62,7 +62,6 @@
 
 - (void)initCapture {
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     NSError *error = nil;
     
@@ -94,7 +93,6 @@
                               [NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA],
                               kCVPixelBufferPixelFormatTypeKey, nil];
     videoDataOutput.videoSettings = settings;
-    [settings release];
     
     AVCaptureConnection *conn = [videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
     
@@ -108,14 +106,10 @@
     
     [videoDataOutput setSampleBufferDelegate:(id)self queue:queue];
     [_captureSession addOutput:videoDataOutput];
-    [videoDataOutput release];
     
-    dispatch_release(queue);
 
     [_captureSession startRunning];
     _started = YES;
-    
-    [pool release];
     
 }
 

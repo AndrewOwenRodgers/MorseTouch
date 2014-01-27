@@ -66,8 +66,8 @@
 		07278A7C188F56690061D50B /* FlashOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashOperation.m; sourceTree = "<group>"; };
 		074ED70018930E5E00905A3D /* ReceiverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverViewController.h; sourceTree = "<group>"; };
 		074ED70118930E5E00905A3D /* ReceiverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverViewController.m; sourceTree = "<group>"; };
-		074ED7031893166C00905A3D /* CFMagicEvents.h */ = {isa = PBXFileReference; lastKnownFileType = file; path = CFMagicEvents.h; sourceTree = "<group>"; };
-		074ED7041893166C00905A3D /* CFMagicEvents.m */ = {isa = PBXFileReference; lastKnownFileType = file; path = CFMagicEvents.m; sourceTree = "<group>"; };
+		074ED7031893166C00905A3D /* CFMagicEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFMagicEvents.h; sourceTree = "<group>"; };
+		074ED7041893166C00905A3D /* CFMagicEvents.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFMagicEvents.m; sourceTree = "<group>"; };
 		074ED70A18932D7300905A3D /* TheUltimateConversionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheUltimateConversionOperation.h; sourceTree = "<group>"; };
 		074ED70B18932D7300905A3D /* TheUltimateConversionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheUltimateConversionOperation.m; sourceTree = "<group>"; };
 		1566F5F06FAD418FB3593AE9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +233,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Andrew Rodgers";
 				TargetAttributes = {
+					072789F5188DA0440061D50B = {
+						DevelopmentTeam = N8E9S58LFT;
+					};
 					07278A16188DA0440061D50B = {
 						TestTargetID = 072789F5188DA0440061D50B;
 					};
@@ -452,10 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Morse Torch/Morse Torch-Prefix.pch";
 				INFOPLIST_FILE = "Morse Torch/Morse Torch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -466,10 +472,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Morse Torch/Morse Torch-Prefix.pch";
 				INFOPLIST_FILE = "Morse Torch/Morse Torch-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
