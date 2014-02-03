@@ -48,7 +48,10 @@
                 {
                     break;
                 }
+                
+                //Sets the HUD's display letter if the sending hasn't been cancelled
                 _hud.labelText = [NSString stringWithFormat:@"%c", [self.morseString characterAtIndex:i]];
+                
                 if ([[tempArray objectAtIndex:i] isEqualToString:@" "]) //Stops flashing for .5 seconds for spaces between words
                 {
                     [NSThread sleepForTimeInterval:0.5];
