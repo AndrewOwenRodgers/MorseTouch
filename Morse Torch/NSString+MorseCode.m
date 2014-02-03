@@ -175,7 +175,7 @@
 }
 
 
-- (NSString *) letterForSingleMorseCodeSymbol:(NSString *)letter //Returns the morse code for a letter
++ (NSString *) letterForSingleMorseCodeSymbol:(NSString *)letter //Returns the morse code for a letter
 {
     if ([letter isEqualToString:@".-"])
     {
